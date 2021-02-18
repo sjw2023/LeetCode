@@ -11,25 +11,42 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     int num2Index;
     int middleIndex = ( n+m ) / 2;
     //copy values
-    for( index = 0, num1Index = 0, num2Index = 0; index < n + m && ( num1Index < n || num2Index < m ) ; index++ )
+    for( index = 0, num1Index = 0, num2Index = 0; index < n + m ; index++ )
     {
-
-        if( nums1[num1Index] > nums2[num2Index] )
+        //case 1: num1 and num2 both still alive
+        if( num1Index < n && num2Index < m )
         {
+            //compare and copy value to the merged arr
+            //case1: 1 > 2
+            if( nums1[num1Index] > nums2[num2Index] )
+            {
+                mergedArr[index] = nums2[num2Index++];
+            }
+            //case2: 1 < 2
+            else if( nums1[num1Index] < nums2[num2Index] )
+            {
+                mergedArr[index] = nums1[num1Index++];
+            }
+            //case3: 1 == 2
+            else
+            {
+                mergedArr[index++] = nums1[num1Index++];
+                mergedArr[index] = nums2[num2Index++];
+            }
+        }
+        //case 2: num1 is dead
+        else if( num1Index == n && num2Index < m )
+        {
+            //just copy num2
             mergedArr[index] = nums2[num2Index++];
-            // printf("%d\n", mergedArr[index]);
         }
-
-        else if( nums1[num1Index] < nums2[num2Index] )
+        //case 3: num2 is dead
+        else if( num2Index == m && num1Index < n)
         {
-            mergedArr[index] = nums1[num1Index++];
-            // printf("%d\n", mergedArr[index]);
-        }
-        else
-        {
-            mergedArr[index++] = nums2[num2Index++];
+            //just copy num1
             mergedArr[index] = nums1[num1Index++];
         }
+        //case 4: both dead, but its as same as for loop termination condition
     }
     //find median
     //case1: both length same -> always even -> need some calc for getting median
