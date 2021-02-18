@@ -11,7 +11,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     int num2Index;
     int middleIndex = ( n+m ) / 2;
     //copy values
-    for( index = 0, num1Index = 0, num2Index = 0; index < n + m && ( num1Index < n || num2Index ) < m ; index++ )
+    for( index = 0, num1Index = 0, num2Index = 0; index < n + m && ( num1Index < n || num2Index < m ) ; index++ )
     {
 
         if( nums1[num1Index] > nums2[num2Index] )
