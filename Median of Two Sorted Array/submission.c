@@ -55,5 +55,5 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         // case1: if m+n = odd then mergedArr[ (m+n)/2 ] is median
         // case2: else ( mergedArr[ (m+n)/2 ] +  mergedArr[ ( (m+n)/2 ) +1] ) / 2 is median
 
-    return ( (middleIndex ) %2 == 0 ) ? (double)( mergedArr[ middleIndex ] +  mergedArr[ middleIndex - 1 ] ) / 2.0 : (double)mergedArr[ middleIndex ];
+    return ( (middleIndex ) %2 == 0 ) ? ((middleIndex == 0) ? mergedArr[middleIndex] : (double)( mergedArr[ middleIndex ] +  mergedArr[ middleIndex - 1 ] ) / 2.0 ) : (double)mergedArr[ middleIndex ];
 }
