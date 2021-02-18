@@ -22,6 +22,8 @@ char * longestPalindrome(char * s){
         //move r to end of repeatition
         while( *r && ( *r == *(r-1) ))
               r++;
+        //move cursor
+        cursor=r;
         //from now on just need to compare l and r till there isn't match
         while( l >= s && *r )
         {
@@ -38,8 +40,7 @@ char * longestPalindrome(char * s){
             length = r - l - 1;// since while checkin palidrome l--; r++; part moved r and l cursor to letter which is not palidrom
             ret = l + 1;//same reason above
         }
-        //move cursor
-        cursor=r;
+
     }
     ret[length] = '\0';
     return ret;
