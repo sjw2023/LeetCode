@@ -9,6 +9,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     int index = 0;
     int num1Index;
     int num2Index;
+    int totalLength = (n+m);
     int middleIndex = ( n+m ) / 2;
     //copy values
     for( index = 0, num1Index = 0, num2Index = 0; index < n + m ; index++ )
@@ -55,5 +56,5 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         // case1: if m+n = odd then mergedArr[ (m+n)/2 ] is median
         // case2: else ( mergedArr[ (m+n)/2 ] +  mergedArr[ ( (m+n)/2 ) +1] ) / 2 is median
 
-    return ( (middleIndex ) %2 == 0 ) ? ((middleIndex == 0) ? mergedArr[middleIndex] : (double)( mergedArr[ middleIndex ] +  mergedArr[ middleIndex - 1 ] ) / 2.0 ) : (double)mergedArr[ middleIndex ];
+    return ( (totalLength ) %2 == 0 ) ? ((middleIndex == 0) ? mergedArr[middleIndex] : (double)( mergedArr[ middleIndex ] +  mergedArr[ middleIndex - 1 ] ) / 2.0 ) : (double)mergedArr[ middleIndex ];
 }
