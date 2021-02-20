@@ -3,6 +3,7 @@
 int reverse(int x){
     int ret=0;
     int count=0;
+    bool isNeg = false;
     int ten = 10;
     if(x == 0)
     {
@@ -10,14 +11,16 @@ int reverse(int x){
     }
     if( x < 0 )
     {
-        ten = -0;
+        isNeg = true;
+        x *= -1;
     }
-    while( x > 0 )
+    while( x != 0 )
     {
         ret *= ten;
+        printf("%d\n", ret);
         ret += x%10;
         x /= 10;
         count++;
     }
-    return ret;
+    return (isNeg) ? -ret : ret;
 }
